@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration</title>
+
+    <link rel="stylesheet" href="products.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Administration</h1>
+    </header>
+    <main>
+      <div class="sub-heading"><h2>Products</h2></div>
+      <div class="new-container">
+        <h2>New Product</h2>
+        <form action="#">
+          <div>
+            <label for="fname">Name</label><br />
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="Enter name..."
+              required
+              maxlength="25"
+            />
+          </div>
+          <div>
+            <label for="description">Description</label><br />
+            <textarea
+              name="description"
+              id="description"
+              rows="10"
+              cols="30"
+              required
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="photo">Photo</label><br />
+            <input type="file" name="photo" id="photo" multiple required />
+          </div>
+          <div>
+            <label for="SKU">SKU</label><br />
+            <input
+              type="text"
+              id="SKU"
+              name="SKU"
+              pattern="[A-Z]{3}-[0-9]{3}"
+              placeholder="Enter the SKU..."
+              required
+            />
+          </div>
+          <div>
+            <label for="price">Price</label><br />
+            <input type="number" name="price" id="price" step="0.01" required />
+          </div>
+          <div>
+            <label for="date">Publication date</label><br />
+            <input type="date" name="date" id="date" required />
+          </div>
+          <div class="form-control">
+            <label for="category">Categories</label><br />
+            <input
+              type="checkbox"
+              id="shirts"
+              name="shirts"
+              value="shirts"
+              required
+            />
+            <label for="shirts">T-shirts </label><br />
+            <input
+              type="checkbox"
+              id="Summer"
+              name="Summer"
+              value="Summer"
+              required
+            />
+            <label for="Summer"> Summer</label><br />
+            <input
+              type="checkbox"
+              id="Pants"
+              name="Pants"
+              value="Pants"
+              required
+            />
+            <label for="Pants">Pants</label><br />
+            <input
+              type="checkbox"
+              id="Shoes"
+              name="Shoes"
+              value="Shoes"
+              required
+            />
+            <label for="Shoes">Shoes</label>
+          </div>
+
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

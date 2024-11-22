@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration</title>
+    <!-- Bootstarp Style -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!--Custom style-->
+    <link rel="stylesheet" href="products.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Administration</h1>
+    </header>
+    <main>
+      <div class="sub-heading"><h3>Products</h3></div>
+      <div class="product-container">
+        <div class="child-container">
+          <h3>Products</h3>
+          <a href="./new.html"><button type="button">New product</button></a>
+        </div>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>SKU</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+
+          <tr>
+            <td>Black T-Shirt</td>
+            <td>AAA111</td>
+            <td>199</td>
+            <td>
+              <a href=""> <i class="bi bi-pencil-square"></i></a>
+              <a href=""><i class="bi bi-trash3-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>White T-Shirt</td>
+            <td>BBB111</td>
+            <td>199</td>
+            <td>
+              <a href=""> <i class="bi bi-pencil-square"></i></a>
+              <a href=""><i class="bi bi-trash3-fill"></i></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
