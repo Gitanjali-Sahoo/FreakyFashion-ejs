@@ -40,11 +40,14 @@ main {
   align-items: center;
   width: 100%;
 }
+.search-icon form {
+  flex: 0.7;
+}
 .search-bar {
   border: 1px solid black;
   border-radius: 16px;
   padding: 4px;
-  flex: 0.7;
+
   display: flex;
   gap: 5px;
   align-items: center;
@@ -71,7 +74,7 @@ fieldset {
 fieldset > div {
   margin-bottom: 10px;
 }
-form [type="button"] {
+.checkout-container form [type="button"] {
   width: 140px;
   margin: 10px auto;
   background-color: #134b70;
@@ -82,7 +85,7 @@ form [type="button"] {
   font-weight: 700;
   transition: width 2s;
 }
-form [type="button"]:hover {
+.checkout-container form [type="button"]:hover {
   background-color: #508c9b;
   width: 250px;
   font-size: large;
@@ -150,12 +153,12 @@ form [type="button"]:hover {
     border: 2px solid;
     margin-top: 2px;
   }
-  form > input {
+  .checkout-container form > input {
     display: block;
     width: 100%;
     margin: 8px 0;
   }
-  form [type="checkbox"] {
+  .checkout-container form [type="checkbox"] {
     width: 15px;
     display: inline;
   }
@@ -246,20 +249,20 @@ form [type="button"]:hover {
   fieldset :nth-child(2) {
     max-width: 600px;
   }
-  form > div:nth-child(3) {
+  .checkout-container form > div:nth-child(3) {
     width: 40%;
   }
-  form > div:nth-child(1) {
+  .checkout-container form > div:nth-child(1) {
     display: inline-block;
     margin-bottom: 10px;
     min-width: 40%;
     margin-right: 10px;
   }
-  form > div:nth-child(2) {
+  .checkout-container form > div:nth-child(2) {
     display: inline-block;
     min-width: 40%;
   }
-  form [type="button"] {
+  .checkout-container form [type="button"] {
     display: block;
   }
 }
