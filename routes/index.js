@@ -137,4 +137,33 @@ router.get("/products/:urlSlug", (req, res) => {
   });
 });
 
+//Admin page
+router.get("/admin/products", (req, res) => {
+  res.render("admin/products/index", {
+    title: "Adminstations",
+  });
+});
+
+// New product
+router.get("/admin/products/new", function (request, response) {
+  response.render("admin/products/new", { title: "Administration" });
+});
+
+// Load all products in admin page products table using api
+router.get("/api/products", (req, res) => {
+  const select = db.prepare(`
+    SELECT id,
+           productName,
+           productBrand,
+           productPrice,
+           productImage,
+           productSku,
+           productDescription ,
+           urlSlug,
+           createdAt FROM products`);
+
+  const rows = select.all();
+  console.log(`Your response is here ${rows}`);
+  res.json(rows);
+});
 module.exports = router;

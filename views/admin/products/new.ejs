@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administration</title>
 
-    <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="/stylesheets/products.css" />
   </head>
   <body>
     <header>
@@ -15,14 +15,37 @@
       <div class="sub-heading"><h2>Products</h2></div>
       <div class="new-container">
         <h2>New Product</h2>
-        <form action="#">
+        <form action="#" method="post">
           <div>
-            <label for="fname">Name</label><br />
+            <label for="name">Name</label><br />
             <input
               type="text"
-              id="fname"
-              name="fname"
+              id="name"
+              name="name"
               placeholder="Enter name..."
+              required
+              maxlength="25"
+            />
+          </div>
+          <div>
+            <label for="brand">Brand</label><br />
+            <input
+              type="text"
+              id="brand"
+              name="brand"
+              placeholder="Enter brand..."
+              required
+              maxlength="25"
+            />
+          </div>
+
+          <div>
+            <label for="color">Color</label><br />
+            <input
+              type="text"
+              id="color"
+              name="color"
+              placeholder="Enter color..."
               required
               maxlength="25"
             />
@@ -40,7 +63,7 @@
 
           <div>
             <label for="photo">Photo</label><br />
-            <input type="file" name="photo" id="photo" multiple required />
+            <input name="image" id="photo" required />
           </div>
           <div>
             <label for="SKU">SKU</label><br />
@@ -48,7 +71,7 @@
               type="text"
               id="SKU"
               name="SKU"
-              pattern="[A-Z]{3}-[0-9]{3}"
+              pattern="[A-Z]{3}[0-9]{3}"
               placeholder="Enter the SKU..."
               required
             />
@@ -56,45 +79,6 @@
           <div>
             <label for="price">Price</label><br />
             <input type="number" name="price" id="price" step="0.01" required />
-          </div>
-          <div>
-            <label for="date">Publication date</label><br />
-            <input type="date" name="date" id="date" required />
-          </div>
-          <div class="form-control">
-            <label for="category">Categories</label><br />
-            <input
-              type="checkbox"
-              id="shirts"
-              name="shirts"
-              value="shirts"
-              required
-            />
-            <label for="shirts">T-shirts </label><br />
-            <input
-              type="checkbox"
-              id="Summer"
-              name="Summer"
-              value="Summer"
-              required
-            />
-            <label for="Summer"> Summer</label><br />
-            <input
-              type="checkbox"
-              id="Pants"
-              name="Pants"
-              value="Pants"
-              required
-            />
-            <label for="Pants">Pants</label><br />
-            <input
-              type="checkbox"
-              id="Shoes"
-              name="Shoes"
-              value="Shoes"
-              required
-            />
-            <label for="Shoes">Shoes</label>
           </div>
 
           <input type="submit" value="Add" />
