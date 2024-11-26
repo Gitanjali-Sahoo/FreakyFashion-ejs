@@ -55,3 +55,41 @@ loadProductBtn.addEventListener("click", () => {
       console.log("Error fetching products:", error);
     });
 });
+
+// sending data to backend by using fetch api
+document
+  .getElementById("new-product-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
+    const formData = {
+      name: document.getElementById("name").value,
+      brand: document.getElementById("brand").value,
+      description: document.getElementById("description").value,
+      image: document.getElementById("image").value,
+      sku: document.getElementById("sku").value,
+      price: parseFloat(document.getElementById("price").value),
+    };
+
+    // Use Fetch API to send data to the backend
+    fetch("/api/products/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert(message);
+          // Optionally, you can redirect or clear the form here
+          document.getElementById("new-product-form").reset();
+        } else {
+          alert("Failed to add product.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding product:", error);
+      });
+  });

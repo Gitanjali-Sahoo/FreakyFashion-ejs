@@ -180,4 +180,53 @@ router.delete("/api/products/:id", (req, res) => {
     res.status(200).json({ message: "Product deleted successfully" });
   }
 });
+
+// Post method for inserting data into database
+router.post("/api/products/new", (req, res) => {
+  const newProduct = {
+    productName: req.body.name,
+    productBrand: req.body.brand,
+    productDescription: req.body.description,
+    productImage: req.body.image,
+    productSku: req.body.sku,
+    productPrice: req.body.price,
+    urlSlug: generateSlug(req.body.name),
+  };
+  const insert = db.prepare(`
+    INSERT INTO products(
+           productName,
+           productBrand,
+           productPrice,
+           productImage,
+           productSku,
+           productDescription ,
+           urlSlug
+    ) VALUES (
+     @productName,
+      @productBrand,
+      @productPrice,
+      @productImage,
+      @productSku,
+      @productDescription,
+      @urlSlug)`);
+
+  try {
+    insert.run(newProduct);
+    res.status(201).json({ message: "Product added successfully!" });
+  } catch (error) {
+    console.error("Error inserting product:", error);
+    res.status(500).json({ error: "Failed to add product." });
+  }
+  // res.redirect("/admin/products");
+});
+
+// Generate slug
+function generateSlug(input) {
+  return input
+    .toLowerCase() // Convert to lowercase
+    .trim() // Remove leading and trailing whitespace
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with dashes
+    .replace(/-+/g, "-"); // Remove consecutive dashes
+}
 module.exports = router;

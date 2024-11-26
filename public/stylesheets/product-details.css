@@ -114,8 +114,7 @@ input:focus-visible {
 
 .slide img {
   width: 100%;
-  /* height: auto; */
-  height: 300px;
+  height: 360px;
   display: block;
 }
 

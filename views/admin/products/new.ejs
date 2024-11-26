@@ -15,7 +15,7 @@
       <div class="sub-heading"><h2>Products</h2></div>
       <div class="new-container">
         <h2>New Product</h2>
-        <form action="#" method="post">
+        <form id="new-product-form">
           <div>
             <label for="name">Name</label><br />
             <input
@@ -40,17 +40,6 @@
           </div>
 
           <div>
-            <label for="color">Color</label><br />
-            <input
-              type="text"
-              id="color"
-              name="color"
-              placeholder="Enter color..."
-              required
-              maxlength="25"
-            />
-          </div>
-          <div>
             <label for="description">Description</label><br />
             <textarea
               name="description"
@@ -62,15 +51,15 @@
           </div>
 
           <div>
-            <label for="photo">Photo</label><br />
-            <input name="image" id="photo" required />
+            <label for="image">Photo</label><br />
+            <input name="image" id="image" required />
           </div>
           <div>
-            <label for="SKU">SKU</label><br />
+            <label for="sku">SKU</label><br />
             <input
               type="text"
               id="SKU"
-              name="SKU"
+              name="sku"
               pattern="[A-Z]{3}[0-9]{3}"
               placeholder="Enter the SKU..."
               required
