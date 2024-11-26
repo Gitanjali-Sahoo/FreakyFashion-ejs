@@ -163,7 +163,21 @@ router.get("/api/products", (req, res) => {
            createdAt FROM products`);
 
   const rows = select.all();
-  console.log(`Your response is here ${rows}`);
   res.json(rows);
+});
+
+//Delete a product from database by using product id. when FE will send http request to backend.
+router.delete("/api/products/:id", (req, res) => {
+  productId = req.params.id;
+  const select = db.prepare(`
+   DELETE FROM products WHERE id = ?`);
+  const row = select.run(productId);
+  console.log("delete this rows" + row);
+  // If no rows were affected, the ID did not exist
+  if (row.changes === 0) {
+    res.status(404).json({ error: "Product not found" });
+  } else {
+    res.status(200).json({ message: "Product deleted successfully" });
+  }
 });
 module.exports = router;

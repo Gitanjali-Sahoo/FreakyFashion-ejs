@@ -108,7 +108,7 @@ input:focus-visible {
 }
 .card-container img {
   width: 100%;
-  height: 324px;
+  height: 400px;
 }
 .card-details {
   display: flex;
@@ -194,7 +194,7 @@ input:focus-visible {
     display: flex;
     gap: 20px;
   }
-  img {
+  .header-container img {
     width: 100%;
     height: 100px;
     flex: 1;

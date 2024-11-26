@@ -6,7 +6,24 @@ function clearTable() {
   tableBody.innerHTML = ""; // This clears all existing rows
 }
 
-// Event listener to load products when the button is clicked
+//Delete a row when delete icon is clicked
+function deleteProduct(productId, tableRow) {
+  fetch(`/api/products/${productId}`, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        tableRow.remove();
+      } else {
+        console.log("Error deleting product");
+      }
+    })
+    .catch((error) => {
+      console.log("Error deleting product:", error);
+    });
+}
+
+// Event listener to load all products from backend when the button is clicked
 loadProductBtn.addEventListener("click", () => {
   fetch("/api/products")
     .then((response) => response.json())
@@ -22,10 +39,16 @@ loadProductBtn.addEventListener("click", () => {
               <td>${product.productSku}</td>
               <td>${product.productPrice}</td>
               <td> <a href="#" class="delete-icon"><i class="bi bi-trash3-fill"></i></a></td>
-
-
             `;
+
         tableBody.appendChild(row);
+
+        const deleteButton = row.querySelector(".delete-icon");
+        deleteButton.addEventListener("click", (event) => {
+          //to prevent the <a> tag from navigating or reloading the page
+          event.preventDefault();
+          deleteProduct(product.id, row);
+        });
       });
     })
     .catch((error) => {
