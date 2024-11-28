@@ -15,7 +15,7 @@
       <div class="sub-heading"><h2>Products</h2></div>
       <div class="new-container">
         <h2>New Product</h2>
-        <form id="new-product-form">
+        <form>
           <div>
             <label for="name">Name</label><br />
             <input
@@ -52,13 +52,13 @@
 
           <div>
             <label for="image">Photo</label><br />
-            <input name="image" id="image" required />
+            <input name="image" type="text" id="image" required />
           </div>
           <div>
             <label for="sku">SKU</label><br />
             <input
               type="text"
-              id="SKU"
+              id="sku"
               name="sku"
               pattern="[A-Z]{3}[0-9]{3}"
               placeholder="Enter the SKU..."
@@ -67,12 +67,20 @@
           </div>
           <div>
             <label for="price">Price</label><br />
-            <input type="number" name="price" id="price" step="0.01" required />
+            <input
+              type="number"
+              name="price"
+              id="price"
+              step="0.01"
+              min="0"
+              required
+            />
           </div>
 
           <input type="submit" value="Add" />
         </form>
       </div>
     </main>
+    <script src="/javascripts/new.js"></script>
   </body>
 </html>

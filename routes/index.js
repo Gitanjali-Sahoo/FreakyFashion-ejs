@@ -210,6 +210,8 @@ router.post("/api/products/new", (req, res) => {
       @productDescription,
       @urlSlug)`);
 
+  // insert.run(newProduct);
+  // res.status(201).send({ message: "Product has inserted into the database" });
   try {
     insert.run(newProduct);
     res.status(201).json({ message: "Product added successfully!" });
@@ -217,7 +219,6 @@ router.post("/api/products/new", (req, res) => {
     console.error("Error inserting product:", error);
     res.status(500).json({ error: "Failed to add product." });
   }
-  // res.redirect("/admin/products");
 });
 
 // Generate slug
