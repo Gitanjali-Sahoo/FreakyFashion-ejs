@@ -62,6 +62,7 @@ router.get("/search", (req, res) => {
            urlSlug,
            createdAt FROM products WHERE productBrand LIKE TRIM(CONCAT(?, '%')) OR productName LIKE TRIM(CONCAT(?, '%'))
 `);
+
     rows = select.all(searchedQuery, searchedQuery);
   } else {
     // select = db.prepare(`
@@ -87,14 +88,17 @@ router.get("/search", (req, res) => {
 
     // Check if the product is created within the last 7 days
     product.isNew = daysDifference < 7;
-  });
 
+    //Check if product publish date is in future then it will not show in the home page
+    product.hide = productCreatedAt > currentDate;
+  });
+  const productsVisible = rows.filter((product) => !product.hide);
   // If no products are found, set the message
   const message = rows.length === 0 ? "No products found for your search." : "";
   console.log(message);
   console.log("Searched query:", searchedQuery); // Debugging line
   res.render("index", {
-    products: rows,
+    products: productsVisible,
     message: message,
     searchedQuery: searchedQuery,
   });
