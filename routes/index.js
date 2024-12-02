@@ -30,13 +30,16 @@ router.get("/", function (req, res, next) {
     const timeDifference = currentDate - productCreatedAt;
     const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
 
+    //Check if product publish date is in future then it will not show in the home page
+    product.hide = productCreatedAt > currentDate;
     // Check if the product is created within the last 7 days
     product.isNew = daysDifference < 7;
+    // Filter out the products that are marked to be hidden
   });
-
+  const visibleProducts = rows.filter((product) => !product.hide);
   res.render("index", {
     title: "Freaky Fashion",
-    products: rows,
+    products: visibleProducts,
     message: "",
     searchedQuery: "",
   });
@@ -191,6 +194,7 @@ router.post("/api/products/new", (req, res) => {
     productSku: req.body.sku,
     productPrice: req.body.price,
     urlSlug: generateSlug(req.body.name),
+    date: req.body.date,
   };
   const insert = db.prepare(`
     INSERT INTO products(
@@ -200,7 +204,8 @@ router.post("/api/products/new", (req, res) => {
            productImage,
            productSku,
            productDescription ,
-           urlSlug
+           urlSlug,
+           createdAt
     ) VALUES (
      @productName,
       @productBrand,
@@ -208,7 +213,8 @@ router.post("/api/products/new", (req, res) => {
       @productImage,
       @productSku,
       @productDescription,
-      @urlSlug)`);
+      @urlSlug,
+      @date)`);
 
   // insert.run(newProduct);
   // res.status(201).send({ message: "Product has inserted into the database" });

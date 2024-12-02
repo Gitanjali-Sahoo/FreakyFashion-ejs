@@ -11,6 +11,7 @@ form.addEventListener("submit", function (event) {
     image: formData.get("image"),
     sku: formData.get("sku"),
     price: formData.get("price"),
+    date: formData.get("date"),
   };
 
   console.log(data);
